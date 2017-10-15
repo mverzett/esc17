@@ -25,6 +25,6 @@ of the function arguments.
 
 The commands to build and run the exercise are:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/cpp
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
     [studentNM@esc-XY cpp]$ g++ -o dir dir.cpp
     [studentNM@esc-XY cpp]$ ./dir /tmp

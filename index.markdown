@@ -1,5 +1,5 @@
 ---
-title: ESC2016
+title: ESC2017
 subtitle: Exercises Material
 layout: main
 category: basic

@@ -1,2 +1,2 @@
-# esc16
-Material and exercises for the ESC'16 school
+# esc17
+Material and exercises for the ESC'17 school

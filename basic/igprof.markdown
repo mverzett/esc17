@@ -40,7 +40,7 @@ using igprof statistical performance profiler.
 
 Run the test program under igprof performance profiler:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/basic
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/basic
     [studentNM@esc-XY basic]$ igprof -pp -z -o cputicks.gz ./cputicks 1000000
 
 Generate a simple text profile output of run time:

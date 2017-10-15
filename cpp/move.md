@@ -27,6 +27,6 @@ and complete the existing code to:
 
 The commands to build and run the code are:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/cpp
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
     [studentNM@esc-XY cpp]$ g++ -o string string.cpp
     [studentNM@esc-XY cpp]$ ./string

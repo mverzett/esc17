@@ -2,7 +2,7 @@ To modify or add items to these pages:
 
 - Fork the ESC repository and clone it locally.
 
-        git clone https://github.com/<your-username>/esc16
+        git clone https://github.com/<your-username>/esc17
 
 - Modify a file or add a new one in the directories already present, or create
   a new one directory. Notice that each file needs to:
@@ -22,9 +22,9 @@ To modify or add items to these pages:
 
 - Push  your changes to Github and do a pull request with your changes.
   You can preview your changes by going to
-  `https://<github-username>.github.io/esc16/`.
+  `https://<github-username>.github.io/esc17/`.
 
 - Once the pull request is merged, your changes will be visible at:
 
-  <https://infn-esc.github.io/esc16/>
+  <https://infn-esc.github.io/esc17/>
 

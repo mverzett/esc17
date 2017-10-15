@@ -10,7 +10,7 @@ which by defaults compiles in C++14 mode.
 
 Build [cputicks.cc]({{site.exercises_repo}}/hands-on/basic/cputicks.cc):
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/basic
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/basic
     [studentNM@esc-XY basic]$ g++ -Wall -Wextra -o cputicks cputicks.cc
     [studentNM@esc-XY basic]$ ./cputicks 1000
     pi = 3.14159 for 1000 iterations in 2.7878e-05 s

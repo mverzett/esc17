@@ -19,7 +19,7 @@ previously-filled vector.
 Inspect, build and run `containers.cpp`, also through `perf`, varying
 the number of elements:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/cpp
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
     [studentNM@esc-XY cpp]$ g++ -O3 -o containers containers.cpp
     [studentNM@esc-XY cpp]$ ./containers 100000
     vector fill: 0.526868 s

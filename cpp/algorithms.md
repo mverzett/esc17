@@ -16,7 +16,7 @@ generates and prints a vector of randomly-chosen integer numbers.
 Build it and run it a few times to verify that it works as
 expected:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/cpp
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
     [studentNM@esc-XY basic]$ g++ -O3 -Wall -Wextra -o algo algo.cpp
     [studentNM@esc-XY basic]$ ./algo
     [studentNM@esc-XY basic]$ ./algo

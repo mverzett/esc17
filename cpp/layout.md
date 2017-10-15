@@ -21,7 +21,7 @@ execution time. Check also the output of `perf`.
 
 The commands to build and run the code are:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/cpp
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
     [studentNM@esc-XY cpp]$ g++ -O3 -DEXTSIZE=8 -o sort_cold sort_cold.cpp
     [studentNM@esc-XY cpp]$ ./sort_cold
     [studentNM@esc-XY cpp]$ perf stat -d ./sort_cold

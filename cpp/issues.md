@@ -25,7 +25,7 @@ Try and fix the problems.
 
 The commands to build and run the programs are:
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/cpp
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
     [studentNM@esc-XY cpp]$ g++ -o non_owning_pointer non_owning_pointer.cpp
     [studentNM@esc-XY cpp]$ ./non_owning_pointer
     [studentNM@esc-XY cpp]$ valgrind ./non_owning_pointer

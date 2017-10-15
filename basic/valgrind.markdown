@@ -12,7 +12,7 @@ later exercises will go into more detail.
 
 Build [`memerror.cc`]({{site.exercises_repo}}/hands-on/basic/memerror.cc):
 
-    [studentNM@esc-XY ~]$ cd esc16/hands-on/basic
+    [studentNM@esc-XY ~]$ cd esc17/hands-on/basic
     [studentNM@esc-XY basic]$ g++ -g -o memerror memerror.cc
 
 Run the test program under valgrind:

@@ -51,9 +51,9 @@ thanks to an SSH key already generated for you and available in the
 	[studentNM@esc-gw ~]$ ssh esc-XY
 	Last login: ...
 	
-	                 Welcome to ESC16
+	                 Welcome to ESC17
 	
-	 Exercises Material: http://infn-esc.github.io/esc16
+	 Exercises Material: http://infn-esc.github.io/esc17
 	[studentNM@esc-XY ~]$ 
 
 If you want you can do it in one step.
@@ -62,9 +62,9 @@ If you want you can do it in one step.
 	studentNM@esc-gw.pd.infn.it's password: 
 	Last login: ...
 	
-	                 Welcome to ESC16
+	                 Welcome to ESC17
 	
-	 Exercises Material: http://infn-esc.github.io/esc16
+	 Exercises Material: http://infn-esc.github.io/esc17
 	[studentNM@esc-XY ~]$ 
 
 Similarly for urania.
@@ -85,7 +85,7 @@ a copy of everything valuable by the end of the Friday session!
 
 All the school material is included in a git repository. Get it using:
 
-    [studentNM@esc-XY ~]$ git clone https://github.com/infn-esc/esc16.git
+    [studentNM@esc-XY ~]$ git clone https://github.com/infn-esc/esc17.git
 
 ## Testing the environment
 

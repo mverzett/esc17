@@ -14,7 +14,7 @@ allows to measure the elapsed time between two points.
 Build and run
 [`cputicks.cc`]({{site.exercises_repo}}/hands-on/basic/cputicks.cc):
 
-    cd esc16/hands-on/basic
+    cd esc17/hands-on/basic
     c++ -std=c++14 -O -o cputicks cputicks.cc
     ./cputicks
 
