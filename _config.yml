@@ -1,0 +1,66 @@
+highlighter: rouge
+baseurl: /esc16
+menu_header: ESC16
+exercises_repo: https://github.com/infn-esc/esc16/blob/gh-pages
+menu:
+  -
+    name: basic
+    label: BASICS
+    items:
+    - name: environment
+      label: Environment
+    - name: compiling
+      label: Compiling
+    - name: valgrind
+      label: Valgrind
+    - name: igprof
+      label: IgProf
+  - name: architecture
+    label: ARCHITECTURE
+    items:
+    - name: perf
+      label: perf
+
+  - name: cpp
+    label: C++ and MEMORY
+    items:
+    - name: algorithms
+      label: Algorithms
+    - name: issues
+      label: Memory issues
+    - name: pointers
+      label: Smart pointers
+    - name: move
+      label: Move
+    - name: layout
+      label: Data layout
+    - name: vector_vs_list
+      label: vector vs list
+    - name: contract
+      label: Contract
+
+  - 
+    name: floatingpoint
+    label: FLOATING POINT
+    items:
+    - name: fpbasic
+      label: Basic
+    - name: quadsolver
+      label: Second Order Equation
+  -
+    name: vectorization
+    label: VECTORIZATION
+    items:
+    - name: pi
+      label: Vectorize computation of pi
+    - name: binning
+      label: Vectorize the filling of an histogram
+
+defaults: 
+  -
+    scope:
+      path: "basic/"
+      type: "posts"
+    values:
+      category: "basic"
+      layout: "main"
