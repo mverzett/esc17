@@ -1,6 +1,6 @@
 //
 // compile with
-//  c++- -O2 -Wall Virtual.cpp -fopt-info-vec
+//  c++ -O2 -Wall Virtual.cpp -fopt-info-vec
 //
 //  comment out the random_shuffle
 //  try to change the "pattern" in the vector of pointers
@@ -73,8 +73,9 @@ int main() {
   std::vector<B> vb(size,B(7.1));
   std::vector<Base const *> pa; pa.reserve(2*size);
   int i=0; for (auto const & a : va) { pa.push_back(&a); pa.push_back(&vb[i++]); }
+#ifndef NORANDOM
   std::random_shuffle(pa.begin(),pa.end());  
-  
+#endif  
   
   float c=0;
 #ifdef ADHOC_RTTI
