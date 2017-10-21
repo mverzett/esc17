@@ -54,7 +54,7 @@ Use [matmul.cpp]({{site.exercises_repo}}/hands-on/architecture/matmul.cpp)
 
 Compile
 {% highlight bash %}
-c++62 -O2 -fopt-info-vec -march=native
+c++ -O2 -fopt-info-vec -march=native
 {% endhighlight %}
 Measure. What's happening?
 {% highlight bash %}
