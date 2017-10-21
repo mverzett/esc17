@@ -1,6 +1,6 @@
 //
 // compile with
-// c++-62 -O2 -Wall -fopt-info-vec -march=native Branch.cpp
+// c++ -O2 -Wall -fopt-info-vec -march=native Branch.cpp
 //
 //  change -O2 in -Ofast
 //  add -funroll-loops  ??
@@ -97,7 +97,7 @@ int main() {
     benchmark::touch(c);
     for(int j=0;j<size; ++j) 
       r[j]=BRANCH_ALGO(a[j],b[j],c[j]);
-      benchmark::keep(r);
+    benchmark::keep(r);
     delta += (chrono::high_resolution_clock::now()-start);
     }
     std::cout <<" Computation took "
