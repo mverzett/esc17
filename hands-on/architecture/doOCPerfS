@@ -1,5 +1,7 @@
 ~/pmu-tools/ocperf.py stat \
--e task-clock -e cycles -e cycle_activity.stalls_total \
+-e task-clock -e cycles -e cycle_activity.stalls_total -e cycle_activity.stalls_mem_any \
+-e icache_16b.ifdata_stall \
+-e iTLB-load-misses -e iTLB-loads \
 -e resource_stalls.any -e rs_events.empty_cycles -e uops_executed.stall_cycles \
 -e uops_executed.cycles_ge_1_uop_exec \
 -e uops_executed.cycles_ge_2_uops_exec \
@@ -13,7 +15,13 @@
 -e fp_arith_inst_retired.scalar_single -e fp_arith_inst_retired.scalar_double \
 -e mem_load_retired.l1_hit -e mem_load_retired.l2_hit -e mem_load_retired.l3_hit \
 -e mem_load_retired.l3_miss \
--e cycle_activity.stalls_mem_any \
--e uops_issued.vector_width_mismatch \
+-e offcore_requests.all_data_rd -e offcore_requests.all_requests \
+-e offcore_requests.demand_code_rd -e offcore_requests.demand_data_rd \
+-e offcore_response.demand_rfo.any_response \
 $1
+
+
+#-e frontend_retired.l1i_miss \
+#-e frontend_retired.l2_miss \
+#-e uops_issued.vector_width_mismatch \
 
