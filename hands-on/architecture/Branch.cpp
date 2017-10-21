@@ -10,7 +10,8 @@
 // change the way the conditional code is expressed
 //  add -DBRANCH_ALGO=branchless2
 //
-
+// Note: since gcc72 all branch implementations produces similar assembly
+//
 
 #include <chrono>
 #include <array>
