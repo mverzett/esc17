@@ -1,6 +1,6 @@
 //
 // compile with
-// c++-62 -O2 -Wall -fopt-info-vec -march=native Branch.cpp
+// c++ -O2 -Wall -fopt-info-vec -march=native Branch.cpp
 //
 //  change -O2 in -Ofast
 //  add -funroll-loops  ??
@@ -10,7 +10,8 @@
 // change the way the conditional code is expressed
 //  add -DBRANCH_ALGO=branchless2
 //
-
+// Note: since gcc72 all branch implementations produces similar assembly
+//
 
 #include <chrono>
 #include <array>
@@ -97,7 +98,7 @@ int main() {
     benchmark::touch(c);
     for(int j=0;j<size; ++j) 
       r[j]=BRANCH_ALGO(a[j],b[j],c[j]);
-      benchmark::keep(r);
+    benchmark::keep(r);
     delta += (chrono::high_resolution_clock::now()-start);
     }
     std::cout <<" Computation took "
