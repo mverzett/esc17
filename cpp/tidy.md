@@ -1,5 +1,5 @@
 ---
-title: clang-tidy
+title: Static analysis
 category: cpp
 layout: main
 ---
@@ -52,30 +52,30 @@ reformat the resulting code (`-format-style=file`).
 
 The result is not always perfect. Better rerun `clang-format` manuall
 
-	[studentNM@esc-XY basic]$ clang-format -i hello.cc
-	[studentNM@esc-XY basic]$ cat hello.cc
-	#include <iostream>
-	int main(int argc, char* argv[]) {
-	  std::cout << "Hello, ";
-	  if (argc > 1) {
-	    std::cout << argv[1];
-	  } else {
-	    std::cout << "world";
-	  }
-	  std::cout << "!\n";
-	}
+    [studentNM@esc-XY basic]$ clang-format -i hello.cc
+    [studentNM@esc-XY basic]$ cat hello.cc
+    #include <iostream>
+    int main(int argc, char* argv[]) {
+      std::cout << "Hello, ";
+      if (argc > 1) {
+        std::cout << argv[1];
+      } else {
+        std::cout << "world";
+      }
+      std::cout << "!\n";
+    }
 
 Tens of checks are available. To list the enabled checks:
 
-	[studentNM@esc-XY basic]$ clang-tidy -list-checks
+    [studentNM@esc-XY basic]$ clang-tidy -list-checks
 
 To list all the available checks:
 
-	[studentNM@esc-XY basic]$ clang-tidy -checks=* -list-checks
+    [studentNM@esc-XY basic]$ clang-tidy -checks=* -list-checks
 
 To dump a configuration file including all the checks but the mpi ones:
 
-	[studentNM@esc-XY basic]$ clang-tidy -checks=*,-mpi* -dump-config
+    [studentNM@esc-XY basic]$ clang-tidy -checks=*,-mpi* -dump-config
 
 Coming back to the "compilation database", the easiest way to create one is
 through `cmake`. The compilation database is a file called
@@ -86,3 +86,4 @@ through `cmake`. The compilation database is a file called
     [studentNM@esc-XY build]$ cd ..
     [studentNM@esc-XY basic]$ git checkout -- hello.cc
     [studentNM@esc-XY basic]$ clang-tidy -checks=readability-braces-around-statements -p build hello.c
+
