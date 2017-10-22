@@ -5,7 +5,7 @@ layout: main
 ---
 
 The goal of this exercise is to understand how to compile and run test
-programs on esc-XY. The default C++ compiler is 64-bit g++ v. 6.2.0,
+programs on esc-XY. The default C++ compiler is 64-bit g++ v. 7.2.0,
 which by defaults compiles in C++14 mode.
 
 Build [cputicks.cc]({{site.exercises_repo}}/hands-on/basic/cputicks.cc):
