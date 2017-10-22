@@ -38,9 +38,9 @@ server, named esc-gw.pd.infn.it, with the username and password of
 studentNM.
 
 	[me@mylaptop ~]$ ssh -X studentNM@esc-gw.pd.infn.it
-	studentNM@esc-gw.pd.infn.it's password: 
+	studentNM@esc-gw.pd.infn.it's password:
 	Last login: ...
-	[studentNM@esc-gw ~]$ 
+	[studentNM@esc-gw ~]$
 
 The `-X` option forwards the X11 display.
 
@@ -50,22 +50,22 @@ thanks to an SSH key already generated for you and available in the
 
 	[studentNM@esc-gw ~]$ ssh esc-XY
 	Last login: ...
-	
+
 	                 Welcome to ESC17
-	
+
 	 Exercises Material: http://infn-esc.github.io/esc17
-	[studentNM@esc-XY ~]$ 
+	[studentNM@esc-XY ~]$
 
 If you want you can do it in one step.
 
     [me@mylaptop ~]$ ssh -tX studentNM@esc-gw.pd.infn.it ssh esc-XY
-	studentNM@esc-gw.pd.infn.it's password: 
+	studentNM@esc-gw.pd.infn.it's password:
 	Last login: ...
-	
+
 	                 Welcome to ESC17
-	
+
 	 Exercises Material: http://infn-esc.github.io/esc17
-	[studentNM@esc-XY ~]$ 
+	[studentNM@esc-XY ~]$
 
 Similarly for urania.
 
@@ -94,12 +94,22 @@ All the school material is included in a git repository. Get it using:
 2. Check the following commands and the respective outputs.
 
 		[studentNM@esc-XY ~]$ c++ -dumpversion
-		6.2.0
+		7.2.0
 		[studentNM@esc-XY ~]$ valgrind --version
-		valgrind-3.10.0
+		valgrind-3.12.0
+		[studentNM@esc-XY ~]$ clang-format --version
+		clang-format version 5.0.0 (tags/RELEASE_500/final)
+		[studentNM@esc-XY ~]$ clang-tidy --version
+		LLVM (http://llvm.org/):
+		LLVM version 5.0.0
+		Optimized build.
+		Default target: x86_64-unknown-linux-gnu
+		Host CPU: nehalem
+		[studentNM@esc-XY ~]$ perf --version
+		perf version 3.10.0-693.2.2.el7.x86_64.debug
 		[studentNM@esc-XY ~]$ igprof -h
 		igprof [options] program [options]
-		
+
 		Options to igprof:
 		-h, --help                  	this help message
 		...
@@ -145,7 +155,7 @@ when logging into esc-gw.
 	[me@mylaptop ~]$ scp studentNM@esc-gw.pd.infn.it:.ssh/id_rsa.pub esc_ssh
 	[me@mylaptop ~]$ chmod 600 esc_ssh/id_rsa
 	[me@mylaptop ~]$ cat >> .ssh/config <<EOF
-	> 
+	>
 	> Host esc-gw
 	> HostName esc-gw.pd.infn.it
 	> User studentNM
@@ -154,7 +164,7 @@ when logging into esc-gw.
 	> EOF
 	[me@mylaptop ~]$ ssh esc-gw
 	Last login: ...
-	[studentNM@esc-gw ~]$ 
+	[studentNM@esc-gw ~]$
 
 ### Using scp
 
