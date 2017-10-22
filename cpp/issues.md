@@ -4,12 +4,12 @@ layout: main
 category: cpp
 ---
 
-The goal of this exercise is to understand what are the main issues
-when dealing with _owning_ raw pointers and how tools like `valgrind`
-can help identify them.
+The goal of this exercise is to understand what are the main issues when dealing
+with _owning_ raw pointers and how tools like `valgrind` or an _Address
+sanitizer_ can help identify them.
 
-Build and run, directly and through `valgrind`, the following small
-programs in {{site.exercises_repo}}/hands-on/cpp:
+Build and run, directly and through `valgrind`/_ASan_, the following small
+programs in [hands_on/cpp]({{site.exercises_repo}}/hands-on/cpp):
 
 * `non_owning_pointer.cpp`. Uncomment the lines containing calls to
   `free` or `delete` and see what the consequences are at run-time
@@ -26,8 +26,13 @@ Try and fix the problems.
 The commands to build and run the programs are:
 
     [studentNM@esc-XY ~]$ cd esc17/hands-on/cpp
-    [studentNM@esc-XY cpp]$ g++ -o non_owning_pointer non_owning_pointer.cpp
+    [studentNM@esc-XY cpp]$ g++ -g -o non_owning_pointer non_owning_pointer.cpp
     [studentNM@esc-XY cpp]$ ./non_owning_pointer
     [studentNM@esc-XY cpp]$ valgrind ./non_owning_pointer
+
+To enable the _Address sanitizer_ (ASan):
+
+    [studentNM@esc-XY cpp]$ g++ -g -fsanitize=address -o non_owning_pointer non_owning_pointer.cpp
+    [studentNM@esc-XY cpp]$ ./non_owning_pointer
 
 Similarly for the other programs.

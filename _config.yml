@@ -38,7 +38,9 @@ menu:
     - name: vector_vs_list
       label: vector vs list
     - name: contract
-      label: Contract
+      label: Contracts
+    - name: tidy
+      label: Static analysis
 
   -
     name: floatingpoint
