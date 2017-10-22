@@ -1,6 +1,6 @@
 #include <memory>
 
-char const* some_api();
+char* some_api();
 
 int main()
 {
@@ -14,6 +14,7 @@ int main()
 
 #include <cstring>
 
-char const* some_api() {
-  return strstr("Hello, world!", "orl");
+char* some_api() {
+  static char s[] = "Hello, world!";
+  return strstr(s, "orl");
 }
