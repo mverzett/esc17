@@ -17,13 +17,13 @@ kernel void jacobi(
   // serial program
   const int i = get_global_id(0);
   TYPE xnew_i = (TYPE) 0.0;
-  const int row = i*Ndim;
+  const int row = i;
 
   for (int j=0; j<Ndim;j++){
-    xnew_i += A[row+j]*xold[j];
+    xnew_i += A[row+j*Ndim]*xold[j];
   }  
-  xnew_i -= A[row+i]*xold[i];
-  xnew_i  = (b[i]-xnew_i)/A[row+i];
+  xnew_i -= A[row+i*Ndim]*xold[i];
+  xnew_i  = (b[i]-xnew_i)/A[row+i*Ndim];
   xnew[i] = xnew_i;
 }
 

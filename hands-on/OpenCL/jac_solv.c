@@ -105,19 +105,25 @@ int main(int argc, char **argv)
      xnew  = xold;   // just swap pointers.
      xold  = xtmp;
 
-     for (i=0; i<Ndim; i++){
-         xnew[i] = (TYPE) 0.0;
-         for (j=0; j<Ndim;j++){
-             if(i!=j)
-               xnew[i]+= A[i*Ndim + j]*xold[j];
-         }
-         xnew[i] = (b[i]-xnew[i])/A[i*Ndim+i];
+     #pragma omp parallel for
+     for (int ii=0; ii<Ndim; ii++){
+       TYPE xnew_i = (TYPE) 0.0;
+       xnew_i = (TYPE) 0.0;
+       int irow = ii*Ndim;
 
+       for (int jj=0; jj<Ndim;jj++){
+	 xnew_i+= A[irow + jj]*xold[jj];
+       }
+
+       xnew_i-= A[irow + ii]*xold[ii];
+       xnew_i = (b[ii]-xnew_i)/A[irow+ii];
+       xnew[ii] = xnew_i;
      }
      //  
      // test convergence
      //
      conv = 0.0;
+#pragma omp parallel for reduction(+:conv)
      for (i=0; i<Ndim; i++){
          tmp  = xnew[i]-xold[i];
          conv += tmp*tmp;

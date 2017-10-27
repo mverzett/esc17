@@ -1,29 +1,23 @@
+#include <memory>
 
-using SomeType = int;
+using SomeType = std::unique_ptr<int>;
 
-SomeType* factory();
-void do_something(SomeType*);
+SomeType factory();
+void do_something();//SomeType);
 
 int main()
 {
   auto t = factory();
 
-  // try {
-
-  do_something(t);
-
-  delete t;
-
-  // } catch (...) {
-  // }
+  do_something();//t);
 }
 
-SomeType* factory()
+SomeType factory()
 {
-  return new SomeType{};
+  return std::make_unique<int>();
 }
 
-void do_something(SomeType*)
+void do_something()//SomeType)
 {
   throw 1;
 }

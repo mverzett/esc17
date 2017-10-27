@@ -150,34 +150,31 @@ int main(int argc, char **argv)
   /***********************
   ** The Naive Ring Test 
   ***********************/                    
-  if(buff_count < 1001 ) {   /*  only call the ring_naive */
-                             /*  test for small messages. */
-     ring_naive(x,incoming,buff_count,num_procs,num_shifts,my_ID);
-     MPI_Barrier(MPI_COMM_WORLD);
+  ring_naive(x,incoming,buff_count,num_procs,num_shifts,my_ID);
+  MPI_Barrier(MPI_COMM_WORLD);
 
-     t0 = MPI_Wtime();
-     ring_naive(x,incoming,buff_count,num_procs,num_shifts,my_ID);
-     ring_time = MPI_Wtime() - t0;
+  t0 = MPI_Wtime();
+  ring_naive(x,incoming,buff_count,num_procs,num_shifts,my_ID);
+  ring_time = MPI_Wtime() - t0;
 
 #ifdef DEBUG
   printf("\n Node %d has finished with the ring_naive call \n",my_ID);
   fflush(stdout);
 #endif
 
-      /*
-      ** Analyze results 
-      */
-      MPI_Barrier(MPI_COMM_WORLD);
-      MPI_Reduce(&ring_time, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, 
-                                                  MPI_COMM_WORLD);
-      MPI_Reduce(&ring_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, 
-                                                  MPI_COMM_WORLD);
+  /*
+  ** Analyze results 
+  */
+  MPI_Barrier(MPI_COMM_WORLD);
+  MPI_Reduce(&ring_time, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, 
+	     MPI_COMM_WORLD);
+  MPI_Reduce(&ring_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, 
+	     MPI_COMM_WORLD);
 
-      if(my_ID == 0){
-        printf("\n\n Naive Ring Test Results "); 
-        out_results(min_time, max_time, num_procs, buff_count, 
-                                                      num_shifts);
-      }
+  if(my_ID == 0){
+    printf("\n\n Naive Ring Test Results "); 
+    out_results(min_time, max_time, num_procs, buff_count, 
+		num_shifts);
   }
 
 /*********************************************************************

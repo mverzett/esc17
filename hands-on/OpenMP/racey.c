@@ -24,10 +24,16 @@ int main()
 
    printf("I think");
 
-   printf(" race");
-
-   printf(" car");
-
+   #pragma omp parallel
+   {
+     #pragma omp single
+     {
+       #pragma omp task
+       printf(" race");
+       #pragma omp task
+       printf(" car");
+     }
+   }
    printf("s are fun!\n");
  
 }

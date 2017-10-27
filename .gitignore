@@ -2,3 +2,9 @@ _site
 *~
 a.out
 .jekyll-metadata
+*.gz
+*.res
+*.log
+*.data
+*.log
+*.o

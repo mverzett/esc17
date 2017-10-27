@@ -19,15 +19,16 @@ std::ostream& operator<<(std::ostream& os, std::vector<T> const& c)
   return os;
 }
 
-std::vector<std::string> entries(/* add the right arguments here */)
+std::vector<std::string> entries(DIR* dir)
 {
   std::vector<std::string> result;
 
   // // dir has type DIR*
-  // dirent entry;
-  // for (auto* r = &entry; readdir_r(dir, &entry, &r) == 0 && r; ) {
-  //   // `here entry.d_name` is the name of this entry
-  // }
+  dirent entry;
+  for (auto* r = &entry; readdir_r(dir, &entry, &r) == 0 && r; ) {
+    // `here entry.d_name` is the name of this entry
+    result.push_back(entry.d_name);
+  }
 
   return result;
 }
@@ -42,12 +43,9 @@ int main(int argc, char* argv[])
   // int closedir(DIR *dirp);
   // int readdir_r(DIR *dirp, struct dirent *entry, struct dirent **result);
   // 
-  // struct dirent {
-  //   // ...
-  //   char d_name[256];
-  // };
+  auto dir = std::unique_ptr<DIR, decltype(&closedir)>{opendir(name.c_str()), &closedir};
 
-  auto v = entries(/* add the right argument here */);
+  auto v = entries(dir.get());
   std::cout << v << '\n';
 }
 

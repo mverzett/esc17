@@ -7,17 +7,27 @@
 #include "mm_utils.h"
 
 void mm_ijk(int Ndim, int Mdim, int Pdim, TYPE *A, TYPE *B, TYPE *C){
-  int i, j, k;
-  TYPE tmp;
+  TYPE BT[Mdim*Pdim];  
+  #pragma omp parallel for
+  for (int j=0; j<Mdim; j++) { 
+    for(int k=0;k<Pdim;k++) {  
+      B[j*Pdim+k] = *(B+(k*Mdim+j));
+    } 
+  } 
 
-  for (i=0; i<Ndim; i++){
-     for (j=0; j<Mdim; j++){
-        tmp = 0.0;
-	for(k=0;k<Pdim;k++){
-	   /* C(i,j) = sum(over k) A(i,k) * B(k,j) */
-           tmp += *(A+(i*Pdim+k)) *  *(B+(k*Mdim+j));
+  #pragma omp parallel for
+  for (int i=0; i<Ndim; i++){ //loop on A rows
+    for (int j=0; j<Mdim; j++){ //loop on B columns
+      TYPE tmp[4] = {0};
+      for(int k=0;k<Pdim;k += 4){ //loop on common element
+	int a_idx = i*Pdim+k;
+	int b_idx = j*Pdim+k;
+	for(int h=0; h<4; h++) {
+	/* C(i,j) = sum(over k) A(i,k) * B(k,j) */
+	  tmp[h] += A[a_idx+h] * BT[b_idx+h];
 	}
-	*(C+(i*Mdim+j)) += tmp;
-     }
+      }      
+      *(C+(i*Mdim+j)) += tmp[0] + tmp[1] + tmp[2] + tmp[3];
+    }
   }
 }

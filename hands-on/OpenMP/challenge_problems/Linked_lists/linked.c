@@ -54,38 +54,40 @@ struct node* init_list(struct node* p) {
 }
 
 int main(int argc, char *argv[]) {
-     double start, end;
-     struct node *p=NULL;
-     struct node *temp=NULL;
-     struct node *head=NULL;
+  double start, end;
+  struct node *p=NULL;
+  struct node *head=NULL;
      
-	 printf("Process linked list\n");
-     printf("  Each linked list node will be processed by function 'processwork()'\n");
-     printf("  Each ll node will compute %d fibonacci numbers beginning with %d\n",N,FS);      
+  printf("Process linked list\n");
+  printf("  Each linked list node will be processed by function 'processwork()'\n");
+  printf("  Each ll node will compute %d fibonacci numbers beginning with %d\n",N,FS);      
  
-     p = init_list(p);
-     head = p;
+  p = init_list(p);
+  head = p;
 
-     start = omp_get_wtime();
-     {
-        while (p != NULL) {
-		   processwork(p);
-		   p = p->next;
-        }
-     }
+  start = omp_get_wtime();
+  #pragma omp parallel
+  {
+    while (p != NULL) {
+#pragma omp task
+      processwork(p);
+      p = p->next;
+    }
+  }
 
-     end = omp_get_wtime();
-     p = head;
-	 while (p != NULL) {
-        printf("%d : %d\n",p->data, p->fibdata);
-        temp = p->next;
-        free (p);
-        p = temp;
-     }  
-	 free (p);
+  end = omp_get_wtime();
+  struct node *temp=NULL;
+  p = head;
+  while (p != NULL) {
+    printf("%d : %d\n",p->data, p->fibdata);
+    temp = p->next;
+    free (p);
+    p = temp;
+  }  
+  free (p);
 
-     printf("Compute Time: %f seconds\n", end - start);
+  printf("Compute Time: %f seconds\n", end - start);
 
-     return 0;
+  return 0;
 }
 

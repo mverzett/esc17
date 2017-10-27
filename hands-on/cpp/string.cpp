@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include <assert.h>
 
 class String {
   char* s_; // nullptr or null-terminated
@@ -19,32 +20,39 @@ class String {
     s_ = new char[size];
     memcpy(s_, other.s_, size);
   }
-  String(String&& tmp)
+  String(String&& tmp) noexcept
       : s_(tmp.s_) {
     tmp.s_ = nullptr;
   }
-  String& operator=(String const& other)
+  String& operator=(String const& other) noexcept
   {
-    // to be implemented
+    size_t size = strlen(other.s_) + 1;
+    s_ = new char[size];
+    memcpy(s_, other.s_, size);
+    return *this;
   }
-  String& operator=(String&& other)
+  String& operator=(String&& other) noexcept
   {
-    // to be implemented
+    s_ = other.s_;    
+    other.s_ = nullptr;
+    return *this;
   }
-  size_t size() const {
+  size_t size() const noexcept {
     return s_ ? strlen(s_) : 0;
   }
   char const* c_str() const
   {
-    // to be implemented;
+    return s_;
   }
   char& operator[](size_t n)
   {
-    // to be implemented
+    assert(s_ && n < strlen(s_));
+    return s_[n];
   }
   char const& operator[](size_t n) const
   {
-    // to be implemented
+    assert(s_ && n < strlen(s_));
+    return s_[n];
   }
 };
 
@@ -70,3 +78,11 @@ int main()
 
   std::cout << s3.c_str() << '\n';
 }
+
+#include <type_traits>
+static_assert(std::is_default_constructible<String>::value);
+static_assert(std::is_copy_constructible<String>::value);
+static_assert(std::is_copy_assignable<String>::value);
+static_assert(std::is_nothrow_move_constructible<String>::value);
+static_assert(std::is_move_assignable<String>::value);
+static_assert(std::is_destructible<String>::value);
